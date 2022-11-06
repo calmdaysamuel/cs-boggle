@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "Inter", sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-title {
+  font-weight: 900;
+  font-size: 40px;
+  background: -webkit-linear-gradient(#9fccfa, #0974f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.start-game {
+  margin: 200px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
+}
+
+input,
+select {
+  align-items: center;
+  height: 36px;
+  padding: 0px 10px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+    rgb(61 59 53 / 16%) 0px 0px 0px 1px, rgb(61 59 53 / 8%) 0px 2px 5px 0px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+}
+button {
+  width: 100%;
+  max-width: 200px;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  height: 32px;
+  padding: 0px 12px;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  background: rgb(0, 0, 0);
+  outline: none;
+  transition: color 100ms ease-in 0s;
+  text-align: left;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  opacity: 0.75;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:active {
+  scale: 0.98;
+}
+.game-grid {
+  max-width: 800px;
+  margin: auto;
+}
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 8px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+    rgb(61 59 53 / 16%) 0px 0px 0px 1px, rgb(61 59 53 / 8%) 0px 2px 5px 0px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.grid-cell:hover {
+}
+.header {
+  /* max-width: 800px; */
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d4d3d3;
+  padding: 12px;
+  gap: 16px;
+  justify-content: center;
+}
+.guessField {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.green {
+  background-color: rgb(66, 194, 66);
+}
+
+.red {
+  background-color: rgb(226, 41, 41);
+}
+
+.in-pro {
+  margin-bottom: 200px;
+}
+
+.summ {
+  /* display: flex; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 24px;
+}
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.game-summary {
+  font-size: 20px;
+  font-weight: 900;
 }
