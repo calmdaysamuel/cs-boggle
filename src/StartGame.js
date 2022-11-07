@@ -4,8 +4,18 @@ import { auth, gamesQuery } from "./firebase";
 import { docs } from "./firebase";
 export function StartGame(props) {
   const [games, setDocs] = useState(docs);
+  const [selected, setSelected] = useState(null);
   let select = (event) => {
-    console.log(event.value);
+    var val;
+    for (var doc of games) {
+      if (doc.id === event.target.value) {
+        val = doc;
+      }
+    }
+
+    props.setHighScore(val.data.highScore);
+    props.setGrid(val.grid);
+    props.setGridSize(val.grid.length);
   };
   return (
     <div className="start-game">
@@ -35,7 +45,9 @@ export function StartGame(props) {
       <select id="games" onChange={select}>
         {games.map((val, index) => {
           return (
-            <option value={val}>{`Game ${index + 1}: ` + val.data.name}</option>
+            <option value={val.id}>
+              {`Game ${index + 1}: ` + val.data.name}
+            </option>
           );
         })}
       </select>

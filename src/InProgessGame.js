@@ -7,7 +7,6 @@ export function InProgressGame(props) {
   const [lastGuess, setLastGuess] = useState("");
   const [allGuesses, setAllGuesses] = useState([]);
   let makeGuess = () => {
-    console.log("guess", guess, allGuesses, props.solutions);
     setLastGuess(guess);
     if (props.solutions.includes(guess)) {
       props.foundWords.add(guess);
@@ -20,9 +19,9 @@ export function InProgressGame(props) {
   };
 
   let guessDisplay = () => {
-    if (allGuesses.includes(lastGuess)) {
-      return `You have already guessed ${lastGuess}`;
-    }
+    // if (allGuesses.includes(lastGuess)) {
+    //   return `You have already guessed ${lastGuess}`;
+    // }
     if (lastGuess === "") {
       return "You have not made a guess yet";
     } else if (props.solutions.includes(lastGuess)) {
@@ -41,7 +40,9 @@ export function InProgressGame(props) {
           Start New Game
         </button>
       </div>
-      {props.highScore ? <h3>The current high is: {props.highScore}</h3> : null}
+      {props.highScore !== null ? (
+        <h3>The current high score is: {props.highScore}</h3>
+      ) : null}
       <GameGrid
         grid={props.grid}
         setSolutions={props.setSolutions}

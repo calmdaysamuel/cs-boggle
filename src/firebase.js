@@ -25,7 +25,11 @@ async function call() {
   const gameSnapshot = await getDocs(gamesQuery);
 
   gameSnapshot.forEach((doc) => {
-    docs.push({ id: doc.id, data: doc.data() });
+    docs.push({
+      id: doc.id,
+      data: doc.data(),
+      grid: JSON.parse(doc.data().grid),
+    });
   });
 }
 call();
