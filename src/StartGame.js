@@ -19,6 +19,9 @@ export function StartGame(props) {
   };
   return (
     <div className="start-game">
+      <button className="main-button" onClick={props.openLeaderboard}>
+        Open Leaderboard
+      </button>
       <button
         className="main-button"
         onClick={async () => {

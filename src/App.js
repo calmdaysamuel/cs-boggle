@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { InProgressGame } from "./InProgessGame";
 import { GameResults } from "./GameResults";
 import { findAllSolutions, RandomGrid } from "./funcs";
+import { LeaderBoard } from "./LeaderBoard";
 
 const words = require("./full-wordlist.json").words;
 function App() {
@@ -30,7 +31,9 @@ function App() {
     setEndTime(new Date());
     setGameState("ended");
   };
-
+  let openLeaderboard = () => {
+    setGameState("leader");
+  };
   let playExistingGame = () => {
     setGameState("inProgress");
     setSolutions(findAllSolutions(grid, wordList));
@@ -53,6 +56,7 @@ function App() {
         displayName={displayName}
         highScore={highScore}
         setHighScore={setHighScore}
+        openLeaderboard={openLeaderboard}
       />
     );
   } else if (gameState === "inProgress") {
@@ -73,6 +77,28 @@ function App() {
         wordList={wordList}
         endGame={endGame}
         setGridId={setGridId}
+        openLeaderboard={openLeaderboard}
+      />
+    );
+  } else if (gameState === "leader") {
+    comp = (
+      <LeaderBoard
+        setGS={setGameState}
+        setGridSize={setGridSize}
+        gridSize={gridSize}
+        setEndTime={setEndTime}
+        setStartTime={setStartTime}
+        foundWords={foundWords}
+        setFoundWords={setFoundWords}
+        solutions={solutions}
+        setSolutions={setSolutions}
+        grid={grid}
+        highScore={highScore}
+        displayName={displayName}
+        wordList={wordList}
+        endGame={endGame}
+        openLeaderboard={openLeaderboard}
+        setGridId={setGridId}
       />
     );
   } else {
@@ -85,6 +111,7 @@ function App() {
         endTime={endTime}
         foundWords={foundWords}
         solutions={solutions}
+        openLeaderboard={openLeaderboard}
         gridId={gridId}
       />
     );
