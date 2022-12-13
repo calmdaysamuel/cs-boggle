@@ -1,6 +1,17 @@
-import { docs } from "./firebase";
-
+import { useEffect, useState } from "react";
+import { docs, docsCall } from "./firebase";
+import React from "react";
 export function LeaderBoard(props) {
+  const [docs, setDocs] = useState([]);
+  useEffect(() => {
+    async function call() {
+      let d = await docsCall();
+
+      setDocs(d);
+    }
+    call();
+  }, []);
+
   return (
     <div>
       <div className="header">

@@ -20,8 +20,9 @@ export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 
 export const gamesQuery = query(collection(firestore, "games"));
-export const docs = [];
-async function call() {
+export async function docsCall() {
+  const docs = [];
+
   const gameSnapshot = await getDocs(gamesQuery);
 
   gameSnapshot.forEach((doc) => {
@@ -31,5 +32,6 @@ async function call() {
       grid: JSON.parse(doc.data().grid),
     });
   });
+
+  return docs;
 }
-call();

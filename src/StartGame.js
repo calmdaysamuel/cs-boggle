@@ -1,9 +1,18 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth, gamesQuery } from "./firebase";
-import { docs } from "./firebase";
+import { auth, docsCall, gamesQuery } from "./firebase";
 export function StartGame(props) {
-  const [games, setDocs] = useState(docs);
+  const [games, setDocs] = useState([]);
+
+  useEffect(() => {
+    async function call() {
+      let d = await docsCall();
+
+      setDocs(d);
+    }
+    call();
+  }, []);
+
   const [selected, setSelected] = useState(null);
   let select = (event) => {
     var val;
